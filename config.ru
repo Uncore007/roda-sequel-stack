@@ -6,10 +6,10 @@ if dev
 end
 
 require 'rack/unreloader'
-Unreloader = Rack::Unreloader.new(subclasses: %w'Roda Sequel::Model', logger: logger, reload: dev, autoload: dev){App}
+Unreloader = Rack::Unreloader.new(subclasses: %w'Roda Sequel::Model', logger: logger, reload: dev, autoload: dev){photo}
 require_relative 'models'
-Unreloader.require('app.rb'){'App'}
-run(dev ? Unreloader : App.freeze.app)
+Unreloader.require('app.rb'){'photo'}
+run(dev ? Unreloader : photo.freeze.app)
 
 unless dev
   require 'tilt/sass' unless File.exist?(File.expand_path('../compiled_assets.json', __FILE__))

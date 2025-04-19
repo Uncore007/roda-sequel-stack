@@ -14,15 +14,15 @@ Gem.suffix_pattern
 
 require_relative '../minitest_helper'
 
-App.plugin :not_found do
+photo.plugin :not_found do
   raise "404 - File Not Found"
 end
-App.plugin :error_handler do |e|
+photo.plugin :error_handler do |e|
   raise e
 end
 
-App.freeze if ENV['NO_AUTOLOAD']
-Capybara.app = App.app
+photo.freeze if ENV['NO_AUTOLOAD']
+Capybara.app = photo.app
 Capybara.exact = true
 
 class Minitest::HooksSpec
